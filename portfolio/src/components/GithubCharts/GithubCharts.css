@@ -1,0 +1,77 @@
+.github-chart {
+	margin-top: 1.4rem;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 14px;
+	padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.github-chart-head {
+	margin-bottom: 0.9rem;
+    font-size: 15px;
+    color: #d9e6ff;
+}
+
+.github-chart-head h2 {
+	margin-bottom: 0.25rem;
+}
+
+.github-chart-bars {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	gap: 0.45rem;
+	align-items: end;
+	min-height: 220px;
+}
+
+.github-chart-day {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.github-chart-bar-wrap {
+	width: 100%;
+	height: 150px;
+	border-radius: 7px;
+	background: rgba(255, 255, 255, 0.06);
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
+}
+
+.github-chart-bar {
+	width: 100%;
+	background: linear-gradient(180deg, #7ad3ff 0%, #2b8fff 100%);
+	min-height: 2px;
+	transition: height 0.2s ease;
+}
+
+.github-chart-count {
+	font-size: 0.76rem;
+	color: #d9e6ff;
+}
+
+.github-chart-label {
+	font-size: 0.66rem;
+	color: #aec2e6;
+}
+
+.github-chart-note {
+	margin-top: 0.7rem;
+	font-size: 0.92rem;
+	color: #c8d5ec;
+}
+
+.github-chart-error {
+	color: #ff9d9d;
+}
+
+@media (max-width: 820px) {
+	.github-chart-bars {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		row-gap: 1rem;
+	}
+}

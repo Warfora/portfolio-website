@@ -1,18 +1,15 @@
 import "./HomeSectionStyles.css";
-
-import React from 'react'
-
-import HomeBackgroundPicture from "../../assets/table.jpg"
-
+import HomeBackgroundVideo from "../../assets/paragliding-compressed.mp4"
 import {Link} from "react-router-dom";
-
 import { Typewriter } from "react-simple-typewriter";
 
 const HomeSection = () => {
   return (
     <div className= "hero"> 
         <div className="mask">
-            <img className = "intro-igm" src={HomeBackgroundPicture} alt ="HomeBackgroundPicture"/>
+            <video className = "intro-video" autoPlay loop muted>
+                <source src={HomeBackgroundVideo} type="video/mp4" />
+            </video>
         </div>
         <div className ="content">
             <p>Hi, I'm fellow</p>
@@ -28,7 +25,7 @@ const HomeSection = () => {
                   }}
                 >
                   <Typewriter
-                    words={["Software Developer", "Graphics Designer"]}
+                    words={["Software Developer", "Graphics Designer", "Problem Solver", "Paragliding Enthusiast"]}
                     loop={0}
                     cursor
                     cursorStyle="|"
@@ -41,7 +38,7 @@ const HomeSection = () => {
             </h1>
 
             <div>
-                <Link to="/experience" className="btn">experience</Link>
+                <Link to="/projects" className="btn btn-dark">Projects</Link>
                 <Link to="/about" className="btn btn-light">About Me</Link>
             </div> 
 

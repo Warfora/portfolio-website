@@ -1,11 +1,6 @@
 import "./Form.css"
-
-import React from 'react'
-
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
-import {FaArtstation, FaLinkedin, FaGithub} from "react-icons/fa";
 
 /* Laitan myöhemmin järkevästi props käyttäen nää funktiot */
 function Open(){
@@ -35,10 +30,10 @@ function CreateLink() {
 const Form = () => {
 
   const form = useRef();
-  const inputs = useRef();
-  const inputs1 = useRef();
-  const inputs2 = useRef();
-  const inputs3 = useRef();
+  const nameInput = useRef();
+  const emailInput = useRef();
+  const subjectInput = useRef();
+  const messageInput = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -50,49 +45,25 @@ const Form = () => {
           console.log(error.text);
       });
 
-      inputs.current.value = "";
-      inputs1.current.value = "";
-      inputs2.current.value = "";
-      inputs3.current.value = "";
+      nameInput.current.value = "";
+      emailInput.current.value = "";
+      subjectInput.current.value = "";
+      messageInput.current.value = "";
   };
 
   return (
     <div className="form">
         <form ref={form} onSubmit={sendEmail}>
-         <p className="heading2">
-           Contact me directly.
-          </p>
           <label>Your Name</label>
-          <input ref={inputs} type="text" placeholder="First and last name" name="user_name" />
+          <input ref={nameInput} type="text" placeholder="Your name" name="user_name" />
           <label>Email</label>
-          <input ref={inputs1} type="email" placeholder="Personal or work email" name="user_email" />
+          <input ref={emailInput} type="email" placeholder="Personal or work email" name="user_email" />
           <label>Subject</label>
-          <input ref={inputs2} type="text" placeholder="Subject of the matter" name="user_subject"/>
+          <input ref={subjectInput} type="text" placeholder="Subject of the matter" name="user_subject"/>
           <label>Message</label>
-          <textarea ref={inputs3} rows ="6" placeholder="Type your message here" name="message" />
+          <textarea ref={messageInput} rows ="6" placeholder="Type your message here" name="message" />
           <input className="btn" type="submit" value="Submit" />
-          <br/><br/><br></br><br></br>
        </form>
-
-       <p className="heading2">
-        Me on different platforms.
-      </p>
-      <button className="button" onClick={Open}>
-        LinkedIn&nbsp;&nbsp;
-        <FaLinkedin size={30} style={{color:"#fff", marginRight: "1rem" }}/>
-      </button>
-      <br/>
-      <button className="button" onClick={Open2}>
-        Github&nbsp;&nbsp;
-        <FaGithub size={30} style={{color:"#fff", marginRight: "1rem" }}/>
-      </button>
-      <br/>
-      <button className="button" onClick={Open3}>
-        ArtStation&nbsp;&nbsp;
-        <FaArtstation size={30} style={{color:"#fff", marginRight: "0rem" }}/>
-      </button>
-      <br/><br/><br/><br/><br/>
-    
     </div>
   )
 }

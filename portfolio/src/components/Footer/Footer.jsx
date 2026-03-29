@@ -1,40 +1,63 @@
 import "./Footer.css";
 
-import React from 'react';
 
-import {FaHome, FaPhone, FaMailBulk, FaArtstation, FaLinkedin, FaGithub} from "react-icons/fa";
+import {FaHome, FaPhone, FaMailBulk, FaArtstation, FaLinkedin, FaGithub, FaInstagram} from "react-icons/fa";
+
+function OpenLinkedIn(){
+  window.open('https://www.linkedin.com/in/katarina-semjonova-964256293/', '_blank', 'noreferrer');
+}
+
+function OpenInstagram(){
+  window.open('https://www.instagram.com/kata_katakka/', '_blank', 'noreferrer');
+}
+
+function OpenGithub(){
+  window.open('https://github.com/Warfora/react-portfolio', '_blank', 'noreferrer');
+}
+
+function OpenArtstation(){
+  window.open('https://www.artstation.com/u8c4c659a', '_blank', 'noreferrer');
+}
 
 const Footer = () => {
   return (
     <div className="footer">
-        <div className="footer-container">
+        <div>
             <div className="left">
-                <div className="location">
-                    <FaHome size={20} style={{color:"#fff", marginRight: "2rem" }}/>
-                    <div>
-                        <p>Oulu, 90520</p>
-                        <p>Finland</p>
-                    </div>
+                <div className="text">
+                    <p><FaHome size={25} style={{color:"#fff", marginRight: "0.5rem" }}/>Oulu, 90520, Finland</p>
                 </div>
-                <div className="phone">
-                    <h4><FaPhone size={20} style={{color:"#fff", marginRight: "2rem" }}/>
-                +358417551987</h4>
+                <div className="text">
+                    <p><FaPhone size={20} style={{color:"#fff", marginRight: "0.5rem" }}/>
+                +358 41 755 1987</p>
                 </div>
 
-                <div className="email">
-                    <h4><FaMailBulk size={20} style={{color:"#fff", marginRight: "2rem" }}/>
-                katarina.semjonova@gmail.com</h4>
+                <div className="text">
+                    <p><FaMailBulk className="social-icon" size={20} style={{color:"#fff", marginRight: "0.5rem" }}/>
+                katarina.semjonova@gmail.com</p>
                 </div>
             </div>
             <div className="right">
-                <h4>Thank you for your consideration.</h4>
-                <p>Katarina Semjonova.</p>
+                <div className="thanks-block">
+                    <h4>Thank you for your consideration.</h4>
+                    <p>- Katarina Semjonova</p>
+                </div>
                 <div className="social">
-                <br></br>
-                <p>Links at the bottom on the contact page.</p>
-                <FaGithub size={30} style={{color:"#fff", marginRight: "1rem" }}/>
-                <FaLinkedin size={30} style={{color:"#fff", marginRight: "1rem" }}/>
-                <FaArtstation size={30} style={{color:"#fff", marginRight: "1rem" }}/>
+                <p>Reach me on different platforms</p>
+                    <div className="social-links">
+                        <button className="social-btn" onClick={OpenLinkedIn}>
+                            <FaLinkedin/>
+                        </button>
+                        <button className="social-btn" onClick={OpenInstagram}>
+                            <FaInstagram/>
+                        </button>
+                        <button className="social-btn" onClick={OpenGithub}>
+                            <FaGithub/>
+                        </button>
+                        <button className="social-btn" onClick={OpenArtstation}>
+                            <FaArtstation/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import "./Navbar.css";
 
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { Link } from "react-router-dom";
 
 import {FaBars ,FaTimes} from "react-icons/fa";
@@ -34,7 +34,10 @@ window.addEventListener("scroll", changeColor);
             <Link to="/experience">Experience</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/projects">Projects</Link>
+          </li>
+          <li>
+            <Link to="/about">About Me</Link>
           </li>
           <li>
             <Link to="/contact">Contact</Link>
