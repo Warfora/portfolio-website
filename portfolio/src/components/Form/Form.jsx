@@ -1,31 +1,6 @@
 import "./Form.css"
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-
-/* Laitan myöhemmin järkevästi props käyttäen nää funktiot */
-function Open(){
-  window.open('https://www.linkedin.com/in/katarina-semjonova-964256293/', '_blank', 'noreferrer');
-}
-
-function Open2(){
-  window.open('https://github.com/Warfora/react-portfolio', '_blank', 'noreferrer');
-}
-
-function Open3(){
-  window.open('https://www.artstation.com/u8c4c659a', '_blank', 'noreferrer');
-}
-
-/* 
-function CreateLink() {
-
-  let anchor = document.createElement('a');
-  let link = document.createTextNode("LinkedIn");
-  anchor.appendChild(link);
-  anchor.href = "https://www.linkedin.com/in/katarina-semjonova-b05a57230/";
-  document.body.appendChild(anchor);
-
-}
-*/
 
 const Form = () => {
 
@@ -34,21 +9,32 @@ const Form = () => {
   const emailInput = useRef();
   const subjectInput = useRef();
   const messageInput = useRef();
+  const [showSentPopup, setShowSentPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const publicKey = 'V4CMvCBZRdUaKbw7D';
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_rj3l5jo', 'template_f0591am', form.current, '6NxC1ve2bEoMuROli')
+    emailjs.sendForm('service_dz4c7kj', 'template_k4linki', form.current, publicKey)
       .then((result) => {
           console.log(result.text);
+          setShowSentPopup(true);
+          setTimeout(() => {
+            setShowSentPopup(false);
+          }, 2000);
+
+          nameInput.current.value = "";
+          emailInput.current.value = "";
+          subjectInput.current.value = "";
+          messageInput.current.value = "";
       }, (error) => {
           console.log(error.text);
+          setShowErrorPopup(true);
+          setTimeout(() => {
+            setShowErrorPopup(false);
+          }, 3000);
       });
-
-      nameInput.current.value = "";
-      emailInput.current.value = "";
-      subjectInput.current.value = "";
-      messageInput.current.value = "";
   };
 
   return (
@@ -64,6 +50,8 @@ const Form = () => {
           <textarea ref={messageInput} rows ="6" placeholder="Type your message here" name="message" />
           <input className="btn" type="submit" value="Submit" />
        </form>
+         {showSentPopup && <div className="form-sent-popup">Message sent</div>}
+         {showErrorPopup && <div className="form-error-popup">Message failed to send</div>}
     </div>
   )
 }
