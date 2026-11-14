@@ -48,7 +48,7 @@ const HomeSection = () => {
                   }}
                 >
                   <Typewriter
-                    words={["Software Engineer", "Problem Solver", "Graphics Designer"]}
+                    words={["Software Developer", "Information Technology Student", "Graphics Designer"]}
                     loop={0}
                     cursor
                     cursorStyle="|"
