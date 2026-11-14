@@ -19,7 +19,7 @@ const experiences = [
     title: "Mover",
     organization: "Niemi Palvelut Oy",
     description: "Handled furniture and equipment transportation, loading, unloading, and customer service while ensuring safe and efficient moves.",
-    technologies: "Long Distance Moving, Residental Moving, Commercial Moving",
+    skills: "Long Distance Moving, Residental Moving, Commercial Moving",
     color: "#9b7bff",
   },
   {
@@ -64,7 +64,7 @@ const ExperienceTimeline = () => (
               <p className="experience-organization">{experience.organization}</p>
               <p className="experience-description">{experience.description}</p>
               <p className="experience-technologies">
-                <strong>Technologies:</strong> {experience.technologies}
+                <strong>{experience.skills ? "Skills:" : "Technologies:"}</strong> {experience.skills || experience.technologies}
               </p>
             </article>
           </li>
