@@ -1,18 +1,20 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./ImageSlider.css";
 
 const PROJECTS_PER_SLIDE = 2;
 const SLIDE_AUTO_MS = 4200;
 
 const projectTextByKey = {
-	AutorunnerGame: "2D autorunner prototype focused on movement and obstacle timing.",
+	SpedenSpelit: "Classic Speden Spelit game using Arduino board.",
+	RaspberryCaseModel: "Custom 3D Raspberry Pi case model with practical ventilation details.",
+	SportBuddies: "A mobile application for finding sports partners and discovering nearby sports facilities.",
+	RobbingSimulatorGame: "3D burglary simulator prototype with physics interactions and scoring.",
+	AutorunnerGame: "2D autorunner prototype focused on movement and obstacle timing. I created a 20-second intro animation for it manually.",
 	CampfireGame: "Atmospheric pixel-art adventure with survival-style mechanics.",
 	Ghost_2D_Game: "Simple platforming game with combat and level progression.",
-	RaspberryCaseModel: "Custom 3D Raspberry Pi case model with practical ventilation details.",
-	RobbingSimulatorGame: "3D burglary simulator prototype with physics interactions and scoring.",
 	ElementsOfAI: "Completed AI fundamentals course and earned certification.",
-	Snake_2D_Game: "Classic Snake clone built in Python with score tracking.",
-	MobileGameDesigns: "Character sprite design study with multiple action states.",
+	// Snake_2D_Game: "Classic Snake clone built in Python with score tracking.",
+	// MobileGameDesigns: "Character sprite design study with multiple action states.",
 };
 
 function normalizeName(rawName) {
@@ -34,6 +36,9 @@ function buildProjectsFromImages() {
 	);
 
 	const projectMap = new Map();
+	const projectOrder = new Map(
+		Object.keys(projectTextByKey).map((key, index) => [key, index])
+	);
 
 	Object.entries(modules).forEach(([path, imageSrc]) => {
 		const normalized = path.replace(/\\/g, "/");
@@ -61,7 +66,12 @@ function buildProjectsFromImages() {
 				images: sortedItems.map((item) => item.src),
 			};
 		})
-		.sort((a, b) => compareNatural(a.title, b.title));
+		.sort(
+			(a, b) =>
+				(projectOrder.get(a.key) ?? Number.MAX_SAFE_INTEGER) -
+					(projectOrder.get(b.key) ?? Number.MAX_SAFE_INTEGER) ||
+				compareNatural(a.title, b.title)
+		);
 }
 
 function chunkProjects(projects, size) {
@@ -82,6 +92,8 @@ const ImageSlider = () => {
 	const [slideIndex, setSlideIndex] = useState(0);
 	const [lightboxProject, setLightboxProject] = useState(null);
 	const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
+	const touchStart = useRef(null);
+	const suppressCardClick = useRef(false);
 
 	if (projects.length === 0) {
 		return <p className="slider-empty">No project images found.</p>;
@@ -95,6 +107,34 @@ const ImageSlider = () => {
 
 	const goPrev = () => {
 		setSlideIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+	};
+
+	const handleTouchStart = (event) => {
+		suppressCardClick.current = false;
+		const touch = event.touches[0];
+		touchStart.current = { x: touch.clientX, y: touch.clientY };
+	};
+
+	const handleTouchEnd = (event) => {
+		if (!touchStart.current) {
+			return;
+		}
+
+		const touch = event.changedTouches[0];
+		const deltaX = touch.clientX - touchStart.current.x;
+		const deltaY = touch.clientY - touchStart.current.y;
+		touchStart.current = null;
+
+		if (Math.abs(deltaX) < 50 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+			return;
+		}
+
+		suppressCardClick.current = true;
+		if (deltaX < 0) {
+			goNext();
+		} else {
+			goPrev();
+		}
 	};
 
 	useEffect(() => {
@@ -168,10 +208,6 @@ const ImageSlider = () => {
 
 	return (
 		<section className="project-slider" aria-label="Project image slider">
-			<div className="slider-header">
-				<h2>Project Gallery</h2>
-			</div>
-
 			<div className="project-slider-shell">
 				<button
 					type="button"
@@ -191,7 +227,14 @@ const ImageSlider = () => {
 					&#10095;
 				</button>
 
-				<div className="project-slider-viewport">
+				<div
+					className="project-slider-viewport"
+					onTouchStart={handleTouchStart}
+					onTouchEnd={handleTouchEnd}
+					onTouchCancel={() => {
+						touchStart.current = null;
+					}}
+				>
 					<div
 						className="project-slider-track"
 						style={{ transform: `translateX(-${slideIndex * 100}%)` }}
@@ -204,7 +247,13 @@ const ImageSlider = () => {
 											<article
 												className="project-card"
 												key={project.key}
-												onClick={() => openLightbox(project)}
+												onClick={() => {
+													if (suppressCardClick.current) {
+														suppressCardClick.current = false;
+														return;
+													}
+													openLightbox(project);
+												}}
 												onKeyDown={(event) => {
 													if (event.key === "Enter" || event.key === " ") {
 														event.preventDefault();
@@ -224,6 +273,7 @@ const ImageSlider = () => {
 												<div className="project-card-body">
 													<h3>{project.title}</h3>
 													<p>{project.description}</p>
+													<span className="project-card-hint">Press to learn more</span>
 												</div>
 											</article>
 										);

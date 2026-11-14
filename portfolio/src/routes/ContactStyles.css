@@ -1,48 +1,61 @@
-
 .contact-section {
-    position: relative;
-    min-height: clamp(240px, 38vh, 420px);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 12rem;
-    padding-bottom: 5rem;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 32vh;
+  padding: 130px 24px 24px;
 }
 
-.background-video {
-    position: absolute;
-    top: 4%;
-    left: 15%;
-    width: clamp(430px, 68vw, 660px);
-    height: auto;
-    object-fit: contain;
-    object-position: top left;
-    filter: brightness(0.6);
-    z-index: 0;
+.contact-section .heading {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
 }
 
-.heading{
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
-    padding: 1rem;
+.contact-section .heading h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.heading h1{
-    font-size: 3.0rem;
-    margin: 0;
-    text-transform: uppercase;
+.contact-section .heading p {
+  margin-top: 0.5rem;
+  color: #59a2f0;
+  font-size: 1.25rem;
 }
 
-.heading p{
-    font-size: 2.0rem;
-    text-align: center;
+.contact-form-section {
+  padding: 0 24px 72px;
+}
+
+.contact-form-section .form {
+  width: min(600px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid rgba(89, 162, 240, 0.65);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 640px) {
+  .contact-section {
+    min-height: 28vh;
+    padding: 112px 18px 20px;
+  }
+
+  .contact-form-section {
+    padding: 0 18px 56px;
+  }
+
+  .contact-form-section .form {
+    padding: 18px;
+    border-radius: 14px;
+  }
 }

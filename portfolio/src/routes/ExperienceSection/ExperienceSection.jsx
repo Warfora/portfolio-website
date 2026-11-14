@@ -19,6 +19,7 @@ import mobile_img from "../assets/tb3.png";
 import gato_img from "../assets/tb5.png";
 import highway_img from "../assets/highway.png";
 import cer_img from "../assets/cer.png";
+// import arduino_img from "../assets/arduino.png";
 
 function ExeperienceSection({ title, title2, desc, tech, colorMode, image_url }) {
   return (

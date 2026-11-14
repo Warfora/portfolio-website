@@ -2,7 +2,6 @@ import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import Form from '../components/Form/Form.jsx';
 import "./ContactStyles.css";
-import cat from "../assets/cat.gif";
 import ScrollToTop from 'react-scroll-to-top';
 
 const Contact = () => {
@@ -21,14 +20,15 @@ const Contact = () => {
         )}
       />
       <Navbar/>
-      <section className="contact-section">
-        <img className="background-video" src={cat} alt="" aria-hidden="true" />
+      <section className="contact-section" aria-labelledby="contact-title">
         <div className="heading">
-          <h1>Contacts</h1>
+          <h1 id="contact-title">Contact Me</h1>
           <p>Let's chat!</p>
         </div>
       </section>
-      <Form/>
+      <main className="contact-form-section">
+        <Form/>
+      </main>
       <Footer/>
     </div>
   )

@@ -43,7 +43,7 @@ const Footer = () => {
                     <p>- Katarina Semjonova</p>
                 </div>
                 <div className="social">
-                <p>Reach me on different platforms</p>
+                <p>Reach me on different platforms:</p>
                     <div className="social-links">
                         <button className="social-btn" onClick={OpenLinkedIn}>
                             <FaLinkedin/>

@@ -6,10 +6,7 @@
 	margin-left: -50vw;
 	margin-right: -50vw;
 	margin-top: 1.5rem;
-	background: rgba(255, 255, 255, 0.03);
-	border: 1px solid rgba(255, 255, 255, 0.14);
-	border-radius: 14px;
-	padding: 1rem 0;
+	padding: 0.5rem 0;
 }
 
 .slider-header {
@@ -19,11 +16,6 @@
 	gap: 1rem;
 	margin-bottom: 1rem;
 	padding: 0 1rem;
-}
-
-.slider-header h2 {
-	margin: 0;
-	font-size: 1.3rem;
 }
 
 .project-slide-grid {
@@ -84,6 +76,7 @@
 .project-slider-viewport {
 	width: 100%;
 	overflow: hidden;
+	touch-action: pan-y;
 }
 
 .project-slider-track {
@@ -146,6 +139,17 @@
 .project-card-body small {
 	color: #99b7e9;
 	font-size: 0.78rem;
+}
+
+.project-card-hint {
+	display: inline-block;
+	margin-top: 0.35rem;
+	padding: 0.15rem 0.35rem;
+	border-radius: 3px;
+	background: rgba(89, 162, 240, 0.2);
+	color: #59a2f0;
+	font-size: 0.85rem;
+	font-weight: 700;
 }
 
 .slider-empty {
