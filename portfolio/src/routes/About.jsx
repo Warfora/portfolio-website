@@ -27,22 +27,24 @@ const About = () => {
           <div className="about-copy">
             <p className="about-eyebrow">About me</p>
             <h1 id="about-title">Katarina Semjonova</h1>
-            <h2 className="about-role">Software Engineering Student</h2>
+            <h2 className="about-role">Information Technology Student</h2>
             <div className="about-description">
               <p>
-                I chose software engineering because I enjoy solving complex problems, designing technical solutions, 
-                and understanding how systems work. I’m a proactive learner who is curious about emerging technologies.
+                Technology enthusiast who enjoys the creative freedom AI brings to software development, 
+                allowing me to focus more on system architecture and the bigger picture instead of spending 
+                two days hunting down a single bug.
               </p>
 
               <p>
                 I focus on improving my prompt engineering skills, experimenting with different AI agents, 
-                and configuring their skills and constraints. I appreciate how AI can automate repetitive tasks, 
-                allowing me to focus more on planning, architecture, and reviewing the software I create.
+                and configuring their capabilities and constraints. Beyond AI, I work on developing skills 
+                I believe are increasingly important in software development, such as code review, 
+                architectural thinking and cybersecurity.
               </p>
 
               <p>
                 Outside of tech, I’m a sports enthusiast with a particular interest in climbing and paragliding. 
-                I also enjoy tinkering with electronics and learning about cybersecurity.
+                I also enjoy tinkering with electronics.
               </p>
             </div>
           </div>
