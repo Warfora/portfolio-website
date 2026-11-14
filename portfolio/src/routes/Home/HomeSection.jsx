@@ -10,7 +10,15 @@ const HomeSection = () => {
   return (
     <div className= "hero"> 
         <div className={`mask${videoReady ? " mask-video-ready" : ""}`}>
-            <video className="intro-video" autoPlay loop muted onLoadedData={() => setVideoReady(true)}>
+            <video
+              className="intro-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              onCanPlay={() => setVideoReady(true)}
+            >
                 <source src={HomeBackgroundVideo} type="video/mp4" />
             </video>
         </div>

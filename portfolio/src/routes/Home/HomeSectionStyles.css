@@ -3,7 +3,7 @@
     height: 100vh;
     position: relative;
     opacity: 0;
-    transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mask-video-ready {
@@ -65,7 +65,7 @@
 
 @media screen and (max-width:640px){
     .hero .content h1{
-        font-size: 3zzzzrem;
+        font-size: 3rem;
     }
     
     .hero .content p{
