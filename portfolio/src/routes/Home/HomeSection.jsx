@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./HomeSectionStyles.css";
 import HomeBackgroundVideo from "../../assets/paragliding-compressed.mp4"
 import {Link} from "react-router-dom";
@@ -6,18 +6,30 @@ import { Typewriter } from "react-simple-typewriter";
 
 const HomeSection = () => {
   const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef(null);
+
+  const startVideoPlayback = () => {
+    setVideoReady(true);
+
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.warn("The home background video could not start playback.", error);
+      });
+    }
+  };
 
   return (
     <div className= "hero"> 
         <div className={`mask${videoReady ? " mask-video-ready" : ""}`}>
             <video
+              ref={videoRef}
               className="intro-video"
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
-              onCanPlay={() => setVideoReady(true)}
+              onCanPlay={startVideoPlayback}
             >
                 <source src={HomeBackgroundVideo} type="video/mp4" />
             </video>
