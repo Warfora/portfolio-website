@@ -24,7 +24,7 @@ const Projects = () => {
 
 			<main className="projects-page">
 				<h1>Projects</h1>
-				<p>Checkout my activity on GitHub! It’s been a little quiet lately due to work commitments...</p>
+				<p>Checkout my activity on GitHub! It’s been a little quiet lately due to work commitments alongside studies...</p>
 				<GithubCharts username="Warfora" months={12} />
                 <p>Checkout my various projects!</p>
                 <ImageSlider />
